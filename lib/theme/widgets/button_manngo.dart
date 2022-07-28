@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class ButtonManngo extends StatefulWidget {
-  const ButtonManngo({Key? key}) : super(key: key);
+  const ButtonManngo({Key? key, required this.label}) : super(key: key);
+  final String label;
 
   @override
   State<ButtonManngo> createState() => _ButtonManngoState();
@@ -21,7 +20,7 @@ class _ButtonManngoState extends State<ButtonManngo> {
           ),
         ),
       ),
-      child: const Text('Enviar'),
+      child: Text(widget.label),
     );
   }
 }

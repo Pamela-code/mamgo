@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:mamgo/theme/widgets/button_manngo.dart';
 import 'package:mamgo/theme/widgets/textfield_manngo.dart';
 
@@ -15,6 +13,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -24,13 +23,20 @@ class _LoginViewState extends State<LoginView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            Image.asset('assets/logo2.png'),
             Text('Faça Login'),
-            TextFieldManngo(),
-            TextFieldManngo(),
+            TextFieldManngo(
+              label: 'Email',
+            ),
+            TextFieldManngo(
+              label: 'Senha',
+            ),
             SizedBox(
               height: 45,
               width: double.infinity,
-              child: ButtonManngo(),
+              child: ButtonManngo(
+                label: 'Login',
+              ),
             ),
           ],
         ),
