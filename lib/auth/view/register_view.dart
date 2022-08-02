@@ -30,15 +30,19 @@ class _CadastroViewState extends State<CadastroView> {
             const TextFieldManngo(label: 'Nome'),
             const TextFieldManngo(label: 'Email'),
             const TextFieldManngo(label: 'Senha'),
-            const SizedBox(
+            SizedBox(
               height: 45,
               width: double.infinity,
-              child: ButtonManngo(label: 'Cadastrar'),
+              child: ButtonManngo(label: 'Cadastrar', onPressed: () {}),
             ),
-            const SizedBox(
+            SizedBox(
               height: 45,
               width: double.infinity,
-              child: ButtonManngo(label: 'Cancelar'),
+              child: ButtonManngo(
+                  label: 'Cancelar',
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
             ),
           ],
         ),
