@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mamgo/auth/login_view.dart';
+import 'package:mamgo/auth/view/login_view.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);

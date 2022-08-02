@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mamgo/splash/splash_view.dart';
+import 'package:mamgo/splash/view/splash_view.dart';
 
 void main() {
   runApp(const MyApp());

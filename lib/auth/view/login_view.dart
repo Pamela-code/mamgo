@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mamgo/auth/view/cadastro.dart';
 import 'package:mamgo/theme/widgets/button_manngo.dart';
 import 'package:mamgo/theme/widgets/textfield_manngo.dart';
 
@@ -24,19 +25,36 @@ class _LoginViewState extends State<LoginView> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Image.asset('assets/logo2.png'),
-            Text('Faça Login'),
-            TextFieldManngo(
+            const Text('Faça Login'),
+            const TextFieldManngo(
               label: 'Email',
             ),
-            TextFieldManngo(
+            const TextFieldManngo(
               label: 'Senha',
             ),
-            SizedBox(
+            const SizedBox(
               height: 45,
               width: double.infinity,
               child: ButtonManngo(
                 label: 'Login',
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('Ainda não tem uma conta? '),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CadastroView(),
+                      ),
+                    );
+                  },
+                  child: const Text('Cadastre-se'),
+                ),
+              ],
             ),
           ],
         ),
