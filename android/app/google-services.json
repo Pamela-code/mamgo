@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "162821969948",
+    "project_id": "manngo-ce27d",
+    "storage_bucket": "manngo-ce27d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162821969948:android:d8e66c972bc0ea6f7627d9",
+        "android_client_info": {
+          "package_name": "com.example.mamgo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162821969948-d1utqpsfj9bs5vitpdff0ehroh4r6j67.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjTPX3ZWBuv5qFC6MGkMu2kDZL-yFcDXQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162821969948-d1utqpsfj9bs5vitpdff0ehroh4r6j67.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

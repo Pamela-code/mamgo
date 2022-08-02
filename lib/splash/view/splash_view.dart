@@ -12,7 +12,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     Future.delayed(
-      const Duration(seconds: 3),
+      const Duration(seconds: 4),
     ).then((_) => Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
           builder: (context) => const LoginView(),
