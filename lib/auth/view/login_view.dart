@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mamgo/auth/view/forgot_password_view.dart';
 import 'package:mamgo/auth/view/register_view.dart';
 import 'package:mamgo/quiz/view/quiz_view.dart';
 import 'package:mamgo/theme/widgets/button_manngo.dart';
@@ -129,6 +130,20 @@ class _LoginViewState extends State<LoginView> {
                           }
                         });
                       }
+                    }),
+              ),
+              SizedBox(
+                height: 45,
+                width: double.infinity,
+                child: ButtonManngo(
+                    label: 'Esqueci minha senha',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ForgotPassword(),
+                        ),
+                      );
                     }),
               ),
               Row(
