@@ -25,10 +25,44 @@ mixin _$AuthController on _AuthControllerBase, Store {
     });
   }
 
+  late final _$emailAtom =
+      Atom(name: '_AuthControllerBase.email', context: context);
+
+  @override
+  TextEditingController get email {
+    _$emailAtom.reportRead();
+    return super.email;
+  }
+
+  @override
+  set email(TextEditingController value) {
+    _$emailAtom.reportWrite(value, super.email, () {
+      super.email = value;
+    });
+  }
+
+  late final _$senhaAtom =
+      Atom(name: '_AuthControllerBase.senha', context: context);
+
+  @override
+  TextEditingController get senha {
+    _$senhaAtom.reportRead();
+    return super.senha;
+  }
+
+  @override
+  set senha(TextEditingController value) {
+    _$senhaAtom.reportWrite(value, super.senha, () {
+      super.senha = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
-name: ${name}
+name: ${name},
+email: ${email},
+senha: ${senha}
     ''';
   }
 }
