@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TextFieldManngo extends StatefulWidget {
-  const TextFieldManngo({Key? key, required this.label}) : super(key: key);
+  const TextFieldManngo({Key? key, required this.label, this.validator})
+      : super(key: key);
   final String label;
+  final FormFieldValidator<String>? validator;
 
   @override
   State<TextFieldManngo> createState() => _TextFieldManngoState();
@@ -22,18 +24,13 @@ class _TextFieldManngoState extends State<TextFieldManngo> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: widget.validator,
       keyboardType: TextInputType.emailAddress,
-      // validator: (value) {
-      //   if (value == null || value.isEmpty) {
-      //     return 'Informe o seu email';
-      //   } else if (email.hasMatch(value) == false) {
-      //     return 'informe seu e-mail corretamente';
-      //   }
-      //   return null;
-      // },
-      // controller: controller.email,
       decoration: InputDecoration(
-          labelText: widget.label, border: border, focusedBorder: border),
+        labelText: widget.label,
+        border: border,
+        focusedBorder: border,
+      ),
     );
   }
 }
