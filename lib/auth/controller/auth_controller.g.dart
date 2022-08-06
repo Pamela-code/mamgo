@@ -57,6 +57,36 @@ mixin _$AuthController on _AuthControllerBase, Store {
     });
   }
 
+  late final _$createUserAsyncAction =
+      AsyncAction('_AuthControllerBase.createUser', context: context);
+
+  @override
+  Future createUser() {
+    return _$createUserAsyncAction.run(() => super.createUser());
+  }
+
+  late final _$loginAsyncAction =
+      AsyncAction('_AuthControllerBase.login', context: context);
+
+  @override
+  Future login() {
+    return _$loginAsyncAction.run(() => super.login());
+  }
+
+  late final _$_AuthControllerBaseActionController =
+      ActionController(name: '_AuthControllerBase', context: context);
+
+  @override
+  dynamic resetPasswordEmail() {
+    final _$actionInfo = _$_AuthControllerBaseActionController.startAction(
+        name: '_AuthControllerBase.resetPasswordEmail');
+    try {
+      return super.resetPasswordEmail();
+    } finally {
+      _$_AuthControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
