@@ -3,6 +3,8 @@ import 'package:mamgo/auth/controller/auth_controller.dart';
 import 'package:mamgo/theme/widgets/button_manngo.dart';
 import 'package:mamgo/theme/widgets/textfield_manngo.dart';
 
+import '../../quiz/view/quiz_view.dart';
+
 class CadastroView extends StatefulWidget {
   const CadastroView({Key? key}) : super(key: key);
 
@@ -66,6 +68,75 @@ class _CadastroViewState extends State<CadastroView> {
                     onPressed: () {
                       if (_keyForm.currentState!.validate()) {
                         controller.createUser();
+                        showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          },
+                        );
+                        Future.delayed(
+                          const Duration(
+                            seconds: 3,
+                          ),
+                        ).then((value) {
+                          Navigator.pop(context);
+                          if (controller.auth.currentUser != null) {
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (context) => const QuizView(),
+                                ),
+                                (Route<dynamic> route) => false);
+                          } else {
+                            showDialog(
+                              barrierDismissible: false,
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10.0),
+                                    ),
+                                  ),
+                                  content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          // IconButton(
+                                          //   onPressed: () {
+                                          //     Navigator.pop(context);
+                                          //   },
+                                          //   icon: SvgPicture.asset(
+                                          //       'assets/svg/x.svg'),
+                                          // ),
+                                        ],
+                                      ),
+                                      // SvgPicture.asset(
+                                      //   'assets/svg/error.svg',
+                                      //   height: 160,
+                                      // ),
+                                      const SizedBox(
+                                        height: 25,
+                                      ),
+                                      const Text(
+                                        'Algo deu errado',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          }
+                        });
                       }
                     }),
               ),

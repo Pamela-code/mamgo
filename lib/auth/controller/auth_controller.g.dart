@@ -57,6 +57,22 @@ mixin _$AuthController on _AuthControllerBase, Store {
     });
   }
 
+  late final _$authAtom =
+      Atom(name: '_AuthControllerBase.auth', context: context);
+
+  @override
+  FirebaseAuth get auth {
+    _$authAtom.reportRead();
+    return super.auth;
+  }
+
+  @override
+  set auth(FirebaseAuth value) {
+    _$authAtom.reportWrite(value, super.auth, () {
+      super.auth = value;
+    });
+  }
+
   late final _$createUserAsyncAction =
       AsyncAction('_AuthControllerBase.createUser', context: context);
 
@@ -92,7 +108,8 @@ mixin _$AuthController on _AuthControllerBase, Store {
     return '''
 name: ${name},
 email: ${email},
-senha: ${senha}
+senha: ${senha},
+auth: ${auth}
     ''';
   }
 }

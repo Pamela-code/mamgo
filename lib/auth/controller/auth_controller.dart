@@ -17,6 +17,9 @@ abstract class _AuthControllerBase with Store {
   @observable
   TextEditingController senha = TextEditingController();
 
+  @observable
+  FirebaseAuth auth = FirebaseAuth.instance;
+
   @action
   createUser() async {
     try {
