@@ -25,10 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: QuestionView(
-        index: 0,
-      ),
-      //const Splash(),
+      home: const Splash(),
     );
   }
 }
