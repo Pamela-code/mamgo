@@ -32,10 +32,15 @@ class _LoginViewState extends State<LoginView> {
           child: Form(
             key: _keyForm,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Image.asset('assets/logo2.png'),
+                const SizedBox(
+                  height: 15,
+                ),
                 const Text('Faça Login'),
+                const SizedBox(
+                  height: 15,
+                ),
                 Observer(builder: (_) {
                   return TextFieldManngo(
                     controller: controller.email,
@@ -48,6 +53,9 @@ class _LoginViewState extends State<LoginView> {
                     },
                   );
                 }),
+                const SizedBox(
+                  height: 15,
+                ),
                 Observer(builder: (_) {
                   return TextFieldManngo(
                     controller: controller.senha,
@@ -61,6 +69,9 @@ class _LoginViewState extends State<LoginView> {
                     },
                   );
                 }),
+                const SizedBox(
+                  height: 15,
+                ),
                 SizedBox(
                   height: 45,
                   width: double.infinity,
@@ -110,19 +121,14 @@ class _LoginViewState extends State<LoginView> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.end,
                                             children: [
-                                              // IconButton(
-                                              //   onPressed: () {
-                                              //     Navigator.pop(context);
-                                              //   },
-                                              //   icon: SvgPicture.asset(
-                                              //       'assets/svg/x.svg'),
-                                              // ),
+                                              IconButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                icon: const Icon(Icons.close),
+                                              ),
                                             ],
                                           ),
-                                          // SvgPicture.asset(
-                                          //   'assets/svg/error.svg',
-                                          //   height: 160,
-                                          // ),
                                           const SizedBox(
                                             height: 25,
                                           ),
@@ -146,6 +152,9 @@ class _LoginViewState extends State<LoginView> {
                     },
                   ),
                 ),
+                const SizedBox(
+                  height: 15,
+                ),
                 SizedBox(
                   height: 45,
                   width: double.infinity,
@@ -159,6 +168,9 @@ class _LoginViewState extends State<LoginView> {
                           ),
                         );
                       }),
+                ),
+                const SizedBox(
+                  height: 15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

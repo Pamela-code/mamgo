@@ -34,7 +34,13 @@ class _CadastroViewState extends State<CadastroView> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Image.asset('assets/logo2.png'),
+                const SizedBox(
+                  height: 15,
+                ),
                 const Text('Faça Seu Cadastro'),
+                const SizedBox(
+                  height: 15,
+                ),
                 Observer(builder: (_) {
                   return TextFieldManngo(
                     controller: controller.name,
@@ -47,6 +53,9 @@ class _CadastroViewState extends State<CadastroView> {
                     },
                   );
                 }),
+                const SizedBox(
+                  height: 15,
+                ),
                 Observer(builder: (_) {
                   return TextFieldManngo(
                     controller: controller.email,
@@ -59,6 +68,9 @@ class _CadastroViewState extends State<CadastroView> {
                     },
                   );
                 }),
+                const SizedBox(
+                  height: 15,
+                ),
                 Observer(builder: (_) {
                   return TextFieldManngo(
                     controller: controller.senha,
@@ -72,6 +84,9 @@ class _CadastroViewState extends State<CadastroView> {
                     },
                   );
                 }),
+                const SizedBox(
+                  height: 15,
+                ),
                 SizedBox(
                   height: 45,
                   width: double.infinity,
@@ -151,6 +166,9 @@ class _CadastroViewState extends State<CadastroView> {
                           });
                     },
                   ),
+                ),
+                const SizedBox(
+                  height: 15,
                 ),
                 SizedBox(
                   height: 45,
