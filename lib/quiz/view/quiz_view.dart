@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
+import '../../auth/controller/auth_controller.dart';
 import '../../theme/widgets/button_manngo.dart';
 
 class QuizView extends StatelessWidget {
-  const QuizView({Key? key}) : super(key: key);
+  QuizView({Key? key}) : super(key: key);
+  AuthController controller = AuthController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +31,16 @@ class QuizView extends StatelessWidget {
               height: 45,
               width: double.infinity,
               child: ButtonManngo(label: 'Iniciar', onPressed: () {}),
+            ),
+            SizedBox(
+              height: 45,
+              width: double.infinity,
+              child: ButtonManngo(
+                  label: 'Logout',
+                  onPressed: () {
+                    controller.logout();
+                    Navigator.pop(context);
+                  }),
             ),
           ],
         ),

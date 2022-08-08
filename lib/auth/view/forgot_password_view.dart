@@ -47,7 +47,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
               ],
             ),
-            const TextFieldManngo(label: 'Email'),
+            TextFieldManngo(label: 'Email'),
             ButtonManngo(
                 label: 'Continuar',
                 onPressed: () {

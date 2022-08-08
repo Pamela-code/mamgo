@@ -51,4 +51,9 @@ abstract class _AuthControllerBase with Store {
       print(e);
     }
   }
+
+  @action
+  logout() async {
+    await auth.signOut();
+  }
 }
