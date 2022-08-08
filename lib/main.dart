@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mamgo/quiz/view/question_view.dart';
+import 'package:mamgo/quiz/view/quiz_view.dart';
 import 'package:mamgo/splash/view/splash_view.dart';
 
 import 'firebase_options.dart';
@@ -23,7 +25,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const Splash(),
+      home: QuestionView(
+        index: 0,
+      ),
+      //const Splash(),
     );
   }
 }

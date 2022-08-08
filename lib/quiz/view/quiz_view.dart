@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mamgo/auth/view/login_view.dart';
+import 'package:mamgo/quiz/view/question_view.dart';
 
 import '../../auth/controller/auth_controller.dart';
 import '../../theme/widgets/button_manngo.dart';
@@ -30,7 +32,19 @@ class QuizView extends StatelessWidget {
             SizedBox(
               height: 45,
               width: double.infinity,
-              child: ButtonManngo(label: 'Iniciar', onPressed: () {}),
+              child: ButtonManngo(
+                label: 'Iniciar',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const QuestionView(
+                        index: 0,
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
             SizedBox(
               height: 45,
@@ -39,7 +53,11 @@ class QuizView extends StatelessWidget {
                   label: 'Logout',
                   onPressed: () {
                     controller.logout();
-                    Navigator.pop(context);
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (context) => const LoginView(),
+                        ),
+                        (Route<dynamic> route) => false);
                   }),
             ),
           ],

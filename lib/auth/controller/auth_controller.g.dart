@@ -89,6 +89,14 @@ mixin _$AuthController on _AuthControllerBase, Store {
     return _$loginAsyncAction.run(() => super.login());
   }
 
+  late final _$logoutAsyncAction =
+      AsyncAction('_AuthControllerBase.logout', context: context);
+
+  @override
+  Future logout() {
+    return _$logoutAsyncAction.run(() => super.logout());
+  }
+
   late final _$_AuthControllerBaseActionController =
       ActionController(name: '_AuthControllerBase', context: context);
 
