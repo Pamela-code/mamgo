@@ -25,7 +25,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const Splash(),
+      home:
+          // QuizView(),
+          const Splash(),
     );
   }
 }

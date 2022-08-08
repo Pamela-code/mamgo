@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mamgo/quiz/controller/quiz_controller.dart';
+import 'package:mamgo/quiz/view/submit_view.dart';
 import 'package:mamgo/theme/widgets/button_manngo.dart';
 import 'package:mamgo/theme/widgets/textfield_manngo.dart';
 
@@ -13,6 +15,7 @@ class QuestionView extends StatefulWidget {
 
 class _QuestionViewState extends State<QuestionView> {
   QuizController controller = QuizController();
+  final _keyForm = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     if (controller.questions[widget.index]['type'] == 'dissertativa') {
@@ -59,9 +62,18 @@ class _QuestionViewState extends State<QuestionView> {
             ),
             SizedBox(
               height: 200,
-              child: TextFieldManngo(
-                controller: controller.answer,
-                label: 'Sua resposta aqui',
+              child: Form(
+                key: _keyForm,
+                child: TextFieldManngo(
+                  controller: controller.answer,
+                  label: 'Sua resposta aqui',
+                  validator: (String? valor) {
+                    if (valor == "") {
+                      return "Por favor preencha esse campo";
+                    }
+                    return null;
+                  },
+                ),
               ),
             ),
             const SizedBox(
@@ -70,17 +82,31 @@ class _QuestionViewState extends State<QuestionView> {
             SizedBox(
               height: 50,
               width: double.infinity,
-              child: ButtonManngo(
-                label: 'Próxima Pergunta',
-                onPressed: () {
-                  Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            QuestionView(index: widget.index + 1),
-                      ),
-                      (Route<dynamic> route) => false);
-                },
-              ),
+              child: Observer(builder: (_) {
+                return ButtonManngo(
+                  label: controller.questions.length == widget.index + 1
+                      ? 'Terminar'
+                      : 'Próxima Pergunta',
+                  onPressed: () {
+                    if (_keyForm.currentState!.validate()) {
+                      if (controller.questions.length == widget.index + 1) {
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) => const SubmitView(),
+                            ),
+                            (Route<dynamic> route) => false);
+                      } else {
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  QuestionView(index: widget.index + 1),
+                            ),
+                            (Route<dynamic> route) => false);
+                      }
+                    }
+                  },
+                );
+              }),
             )
           ],
         ),
@@ -125,45 +151,108 @@ class _QuestionViewState extends State<QuestionView> {
             ),
             Row(
               children: [
-                Radio(value: false, groupValue: 1, onChanged: (m) {}),
+                Observer(builder: (_) {
+                  return Radio(
+                      value: 1,
+                      groupValue: controller.radioValue,
+                      onChanged: (value) {
+                        controller.radioValue = value;
+                      });
+                }),
                 Text(controller.questions[widget.index]['option1']),
               ],
             ),
             Row(
               children: [
-                Radio(value: false, groupValue: 1, onChanged: (m) {}),
+                Observer(builder: (_) {
+                  return Radio(
+                      value: 2,
+                      groupValue: controller.radioValue,
+                      onChanged: (value) {
+                        controller.radioValue = value;
+                      });
+                }),
                 Text(controller.questions[widget.index]['option2']),
               ],
             ),
             Row(
               children: [
-                Radio(value: false, groupValue: 1, onChanged: (m) {}),
+                Observer(builder: (_) {
+                  return Radio(
+                      value: 3,
+                      groupValue: controller.radioValue,
+                      onChanged: (value) {
+                        controller.radioValue = value;
+                      });
+                }),
                 Text(controller.questions[widget.index]['option3']),
               ],
             ),
             Row(
               children: [
-                Radio(value: false, groupValue: 1, onChanged: (m) {}),
+                Observer(builder: (_) {
+                  return Radio(
+                      value: 4,
+                      groupValue: controller.radioValue,
+                      onChanged: (value) {
+                        controller.radioValue = value;
+                      });
+                }),
                 Text(controller.questions[widget.index]['option4']),
               ],
             ),
+            Observer(builder: (_) {
+              return Visibility(
+                visible: controller.visible,
+                child: Column(
+                  children: const [
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'Selecione uma opção',
+                      style: TextStyle(
+                        color: Colors.redAccent,
+                        fontSize: 12,
+                      ),
+                    )
+                  ],
+                ),
+              );
+            }),
             const SizedBox(
               height: 30,
             ),
             SizedBox(
               height: 50,
               width: double.infinity,
-              child: ButtonManngo(
-                label: 'Próxima Pergunta',
-                onPressed: () {
-                  Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            QuestionView(index: widget.index + 1),
-                      ),
-                      (Route<dynamic> route) => false);
-                },
-              ),
+              child: Observer(builder: (_) {
+                return ButtonManngo(
+                  label: controller.questions.length == widget.index + 1
+                      ? 'Terminar'
+                      : 'Próxima Pergunta',
+                  onPressed: () {
+                    if (controller.radioValue == 0) {
+                      controller.visible = true;
+                    } else {
+                      if (controller.questions.length == widget.index + 1) {
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) => const SubmitView(),
+                            ),
+                            (Route<dynamic> route) => false);
+                      } else {
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  QuestionView(index: widget.index + 1),
+                            ),
+                            (Route<dynamic> route) => false);
+                      }
+                    }
+                  },
+                );
+              }),
             )
           ],
         ),

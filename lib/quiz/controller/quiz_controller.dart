@@ -21,5 +21,13 @@ abstract class _QuizControllerBase with Store {
       'question': 'Que pergunta é essa?',
     }
   ]);
+
+  @observable
   TextEditingController answer = TextEditingController();
+
+  @observable
+  Object? radioValue = 0;
+
+  @observable
+  bool visible = false;
 }

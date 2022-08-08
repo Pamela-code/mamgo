@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mamgo/auth/controller/auth_controller.dart';
 import 'package:mamgo/auth/view/login_view.dart';
+import 'package:mamgo/quiz/view/quiz_view.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -9,15 +11,27 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+  AuthController controller = AuthController();
+
   @override
   void initState() {
-    Future.delayed(
-      const Duration(seconds: 4),
-    ).then((_) => Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(
-          builder: (context) => const LoginView(),
-        ),
-        (Route<dynamic> route) => false));
+    if (controller.auth.currentUser == null) {
+      Future.delayed(
+        const Duration(seconds: 4),
+      ).then((_) => Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (context) => const LoginView(),
+          ),
+          (Route<dynamic> route) => false));
+    } else {
+      Future.delayed(
+        const Duration(seconds: 4),
+      ).then((_) => Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (context) => QuizView(),
+          ),
+          (Route<dynamic> route) => false));
+    }
     super.initState();
   }
 
