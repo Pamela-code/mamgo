@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mamgo/quiz/controller/quiz_controller.dart';
-import 'package:mamgo/quiz/view/submit_view.dart';
+import 'package:mamgo/submit/view/submit_view.dart';
 import 'package:mamgo/theme/widgets/button_manngo.dart';
 import 'package:mamgo/theme/widgets/textfield_manngo.dart';
 
