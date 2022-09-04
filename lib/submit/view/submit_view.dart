@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mamgo/submit/controller/submit_controller.dart';
+import 'package:mamgo/submit/view/camera_view.dart';
 import 'package:mamgo/theme/widgets/button_manngo.dart';
 
 class SubmitView extends StatefulWidget {
@@ -69,6 +70,15 @@ class _SubmitViewState extends State<SubmitView> {
                   ],
                 ),
               ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CameraPage(),
+                    fullscreenDialog: true,
+                  ),
+                );
+              },
             ),
             SizedBox(
               width: double.infinity,
