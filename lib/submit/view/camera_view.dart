@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
@@ -85,6 +87,55 @@ class _CameraPageState extends State<CameraPage> {
     return Container(
       width: size!.width - 50,
       height: size!.height - (size!.height / 3),
+      child: imagem == null
+          ? _cameraPreviewWidget()
+          : Image.file(
+              File(imagem!.path),
+              fit: BoxFit.contain,
+            ),
     );
+  }
+
+  _cameraPreviewWidget() {
+    final CameraController? cameraController = controller;
+    if (cameraController == null || cameraController.value.isInitialized) {
+      return Text('Camera não disponível');
+    } else {
+      return Stack(
+        alignment: AlignmentDirectional.bottomCenter,
+        children: [
+          CameraPreview(controller!),
+          _botaoCaptura(),
+        ],
+      );
+    }
+  }
+
+  _botaoCaptura() {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 24),
+      child: CircleAvatar(
+        radius: 32,
+        backgroundColor: Colors.green,
+        child: IconButton(
+          icon: Icon(Icons.camera_alt),
+          onPressed: tirarFoto,
+        ),
+      ),
+    );
+  }
+
+  tirarFoto() async {
+    final CameraController? cameraController = controller;
+    if (cameraController != null && cameraController.value.isInitialized) {
+      try {
+        XFile file = await cameraController.takePicture();
+        if (mounted) {
+          setState(() => imagem = file);
+        }
+      } on CameraException catch (e) {
+        print(e.description);
+      }
+    }
   }
 }
