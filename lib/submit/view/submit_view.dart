@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mamgo/submit/controller/submit_controller.dart';
@@ -70,14 +71,14 @@ class _SubmitViewState extends State<SubmitView> {
                   ],
                 ),
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CameraPage(),
-                    fullscreenDialog: true,
-                  ),
-                );
+              onTap: () async {
+                await availableCameras().then((value) => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CameraPage(cameras: value),
+                        fullscreenDialog: true,
+                      ),
+                    ));
               },
             ),
             SizedBox(

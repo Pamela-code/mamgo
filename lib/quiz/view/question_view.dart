@@ -61,7 +61,7 @@ class _QuestionViewState extends State<QuestionView> {
               height: 15,
             ),
             SizedBox(
-              height: 200,
+              // height: 200,
               child: Form(
                 key: _keyForm,
                 child: TextFieldManngo(

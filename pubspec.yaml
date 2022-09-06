@@ -39,6 +39,8 @@ dependencies:
   firebase_auth: ^3.3.18
   geolocator: ^9.0.1
   camera: ^0.10.0+1
+  path: ^1.8.1
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_test:

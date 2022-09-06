@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mamgo/quiz/view/question_view.dart';
 import 'package:mamgo/quiz/view/quiz_view.dart';
 import 'package:mamgo/splash/view/splash_view.dart';
+import 'package:mamgo/submit/view/submit_view.dart';
 
 import 'firebase_options.dart';
 
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       home:
           // QuizView(),
-          const Splash(),
+          const SubmitView(),
     );
   }
 }
