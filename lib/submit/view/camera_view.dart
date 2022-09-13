@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
@@ -20,6 +22,8 @@ class _CameraPageState extends State<CameraPage> {
     controller = CameraController(
       widget.cameras[0],
       ResolutionPreset.max,
+      imageFormatGroup: ImageFormatGroup.yuv420,
+      enableAudio: false,
     );
 
     controller.initialize().then((_) {
@@ -67,15 +71,18 @@ class _CameraPageState extends State<CameraPage> {
                       child: ElevatedButton(
                         onPressed: () async {
                           imagem = await controller.takePicture();
-                          setState(() {});
+
+                          if (mounted) {
+                            setState(() {});
+                          }
                         },
                         child: const Text('Pronto'),
                       ),
                     ),
                   ],
                 )
-              : Image.network(
-                  imagem!.path,
+              : Image.file(
+                  File(imagem!.path),
                 ),
         ],
       ),
